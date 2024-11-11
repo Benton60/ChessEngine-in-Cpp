@@ -5,5 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(ChessEngine
     main.cpp
-        example.cpp
-        example.h)
+)
