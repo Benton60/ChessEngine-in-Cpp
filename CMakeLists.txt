@@ -7,4 +7,8 @@ add_executable(ChessEngine
     main.cpp
         Coordinate.h
         Coordinate.cpp
+        Position.h
+        Position.cpp
+        Move.h
+        Move.cpp
 )

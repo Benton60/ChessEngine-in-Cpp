@@ -1,1 +1,21 @@
-Chess engine for final project.
+Chess Engine For C++ Final Project
+By Benton Hershberger, William Walline
+
+
+Note 1:
+    None of the classes have getters or setters because that adds one layer of abstraction. Normally the safety
+    that ensures is worth the nanoseconds of delay it creates but in the case of a chess engine where efficiency is
+    so critical we must leave them out.
+
+
+
+Piece values:
+    (Sub-Note 1: These values are based off of relative piece worth. EX: a queen is worth nine pawns)
+    (Sub-Note 2: The black piece values are the same as the white pieces just multiplied by negative one)
+
+    King - 10000   //I just picked a really big number so that it favors the king more than other pieces
+    Queen - 900
+    Rook - 500
+    Bishop - 350
+    Knight - 300
+    Pawn - 100
