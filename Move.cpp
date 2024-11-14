@@ -12,4 +12,12 @@
 Move::Move(Coordinate start, Coordinate end): start(-1,-1), end(-1,-1) {
     this->start = start;
     this->end = end;
+
+}
+Move::Move(): start(0,0), end(0,0) {
+}
+
+
+std::string Move::toString() {
+    return start.toString() + " " + end.toString();
 }

@@ -16,7 +16,11 @@ class Move {
     public:
         Coordinate start;
         Coordinate end;
+
         Move(Coordinate start, Coordinate end);
+        Move();
+        std::string toString();
+
 };
 
 

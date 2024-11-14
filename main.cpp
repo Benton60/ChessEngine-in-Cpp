@@ -19,4 +19,8 @@ int main() {
 
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), -1);
     position.print();
+    std::cout << std::endl;
+    Move moves[50];
+    position.getLegalMoves(moves);
+    std::cout << moves[0].toString();
 }
