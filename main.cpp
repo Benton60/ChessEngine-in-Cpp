@@ -18,5 +18,5 @@ int main() {
     };
 
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), -1);
-
+    position.print();
 }

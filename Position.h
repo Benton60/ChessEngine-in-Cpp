@@ -17,16 +17,13 @@
 
 class Position {
   public:
-
     int (&board)[8][8];
     //should be -1 for black,and 1 for white
     int color = 0;
     //the lastMove is needed for en-pessant-ing pawns
     Move lastMove;
-
-
-
     Position(int (&board)[8][8], Move lastMove, int color);
+    void print();
 
 };
 
