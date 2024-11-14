@@ -20,7 +20,7 @@ class Move {
         Move(Coordinate start, Coordinate end);
         Move();
         std::string toString();
-
+        static std::string toString(Move moves[]);
 };
 
 

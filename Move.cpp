@@ -21,3 +21,11 @@ Move::Move(): start(0,0), end(0,0) {
 std::string Move::toString() {
     return start.toString() + " " + end.toString();
 }
+
+std::string Move::toString(Move moves[]) {
+    std::string result = "";
+    for(int i = 0; i < 50; i++) {
+        result += moves[i].toString() + "\n";
+    }
+    return result;
+}

@@ -5,6 +5,8 @@
 //
 // Created by bento on 11/11/2024.
 //
+
+
 int main() {
     int board[8][8] = {
         {500,300,350,900,10000,350,300,500},
@@ -22,5 +24,6 @@ int main() {
     std::cout << std::endl;
     Move moves[50];
     position.getLegalMoves(moves);
-    std::cout << moves[0].toString();
+    std::cout << Move::toString(moves);
+
 }
