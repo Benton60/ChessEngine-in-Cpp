@@ -8,6 +8,7 @@
 
 
 int main() {
+    //this board is the start position we can use it to test our move generation functions.
     int board[8][8] = {
         {500,300,350,900,10000,350,300,500},
         {100,100,100,100,100,100,100,100},
@@ -15,15 +16,18 @@ int main() {
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {-100,-100,-100,-100,-100,-100,-100,-100},
+        {-100, -100,-100,-100,-100,-100,-100,-100},
         {-500,-300,-350,-900,-10000,-350,-300,-500}
     };
 
+
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), -1);
     position.print();
-    std::cout << std::endl;
-    Move moves[50];
-    position.getLegalMoves(moves);
-    std::cout << Move::toString(moves);
-
+    Move move = Move(Coordinate(0,0), Coordinate(1,0));
+    position.makeMove(move);
+    std::cout << move.capturedPiece << std::endl;
+    position.print();
+    position.unMakeMove(move);
+    position.print();
+    std::cout << position.getEvaluation() << std::endl;
 }

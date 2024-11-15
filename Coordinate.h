@@ -18,7 +18,7 @@ class Coordinate {
 public:
     int rank;
     int file;
-    Coordinate(int rank, int file);
+    Coordinate(int file, int rank);
 
     //this gives a representation like this "(R,F)" to make it easier to print the contents of a coordinate.
     std::string toString() const;

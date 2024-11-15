@@ -22,11 +22,24 @@ class Position {
     int color = 0;
     //the lastMove is needed for en-pessant-ing pawns
     Move lastMove;
+
+
     Position(int (&board)[8][8], Move lastMove, int color);
 
-
     void print();
+
+
+    //adds all the legal moves to the moves[] array
     void getLegalMoves(Move moves[]);
+    //returns a double value that represents the evaluation for a position
+    double getEvaluation();
+    //takes a move and makes it on the board
+    void makeMove(Move &move);
+    void unMakeMove(Move &move);
+
+    //used to access coordinates on the chess board
+    int getCoordinate(const Coordinate &coordinate);
+    void setCoordinate(const Coordinate &coordinate, const int &piece);
 };
 
 

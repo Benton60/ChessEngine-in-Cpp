@@ -16,7 +16,7 @@ class Move {
     public:
         Coordinate start;
         Coordinate end;
-
+        int capturedPiece;
         Move(Coordinate start, Coordinate end);
         Move();
         std::string toString();

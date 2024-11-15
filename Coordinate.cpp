@@ -9,7 +9,7 @@ a second that will slow the engine down. That's why there aren't any getters or 
 */
 #include "Coordinate.h"
 
-Coordinate::Coordinate(const int rank, const int file) {
+Coordinate::Coordinate(const int file, const int rank) {
     this->rank = rank;
     this->file = file;
 }
