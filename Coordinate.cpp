@@ -17,3 +17,7 @@ Coordinate::Coordinate(const int file, const int rank) {
 std::string Coordinate::toString() const {
     return "(" + std::to_string(rank) + "," + std::to_string(file) + ")";
 }
+
+bool Coordinate::inBounds() const {
+    return (rank >= 0 && rank < 8 && file >= 0 && file < 8);
+}
