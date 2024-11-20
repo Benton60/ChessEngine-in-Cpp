@@ -4,8 +4,21 @@ By Benton Hershberger, William Walline
 
 Note 1:
     None of the classes have getters or setters because that adds one layer of abstraction. Normally the safety
-    that ensures is worth the nanoseconds of delay it creates but in the case of a chess engine where efficiency is
+    that they ensure is worth the nanoseconds of delay it creates, but in the case of a chess engine where efficiency is
     so critical we must leave them out.
+
+
+
+Project Structure:
+    Coordinate class -> The Coordinate class is the most basic class that stores a rank and file that corresponds to a square on the board.
+                        We use these to access and modify squares on the chess board by passing coordinates to the position class.
+
+    Move class       -> The move class is one level up from the Coordinate class. It stores two coordinates, a start square and an end square.
+                        It also has a capturedPiece variable that gets defined when the move is made in the position class.
+                        The capturedPiece variable stores the value that was overwritten when the move was made. We can use this variable to unmake a move on the chess board.
+
+    Position class   -> The position class is the class that holds the 2D array that represents the chess board. All access and change of values on the board should flow
+                        through this class. It holds all the getters and setters for the chess board.
 
 
 
