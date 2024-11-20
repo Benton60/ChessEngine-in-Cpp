@@ -31,7 +31,7 @@ void Position::getLegalMoves(Move moves[]){
                     //TODO -- implement the pawn's getMoves
                     break;
                 case 300: //Knight
-                    Knight(this, Coordinate(i, j)).getMoves(moves, length);
+                    Knight(this, Coordinate(j, i)).getMoves(moves, length);
                     break;
                 case 350: //bishop
                     //TODO -- implement the bishop's getMoves function
@@ -86,7 +86,8 @@ int Position::getCoordinate(const Coordinate &coordinate) {
 void Position::setCoordinate(const Coordinate &coordinate, const int &piece) {
     board[coordinate.rank][coordinate.file] = piece;
 }
-bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {
+bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {\
+    std::cout << getCoordinate(first) << " " << getCoordinate(second) << std::endl;
     if(getCoordinate(first) > 0 && getCoordinate(second) > 0) {
         return true;
     }
