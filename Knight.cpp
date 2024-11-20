@@ -9,14 +9,14 @@ Knight::Knight(Position* position, const Coordinate &location): position(positio
 
 void Knight::getMoves(Move moves[], int &length) {
     Coordinate allEndCoordinates[] = {
-        Coordinate(location.rank+2, location.file-1),
-        Coordinate(location.rank+2, location.file+1),
-        Coordinate(location.rank+1, location.file-2),
-        Coordinate(location.rank+1, location.file-+2),
-        Coordinate(location.rank-1, location.file-2),
-        Coordinate(location.rank-1, location.file+2),
-        Coordinate(location.rank-2, location.file-1),
-        Coordinate(location.rank-2, location.file+1),
+        Coordinate(location.file+2, location.rank-1),
+        Coordinate(location.file+2, location.rank+1),
+        Coordinate(location.file+1, location.rank-2),
+        Coordinate(location.file+1, location.rank+2),
+        Coordinate(location.file-1, location.rank-2),
+        Coordinate(location.file-1, location.rank+2),
+        Coordinate(location.file-2, location.rank-1),
+        Coordinate(location.file-2, location.rank+1),
     };
     for (int i = 0; i < 8; i++) {
         if (allEndCoordinates[i].inBounds()) {
