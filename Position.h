@@ -40,6 +40,8 @@ class Position {
     //used to access coordinates on the chess board
     int getCoordinate(const Coordinate &coordinate);
     void setCoordinate(const Coordinate &coordinate, const int &piece);
+
+    bool areSameColor(const Coordinate &first, const Coordinate &second);
 };
 
 

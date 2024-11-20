@@ -13,6 +13,11 @@ Coordinate::Coordinate(const int file, const int rank) {
     this->rank = rank;
     this->file = file;
 }
+Coordinate::Coordinate() {
+    this->rank = -1;
+    this->file = -1;
+}
+
 
 std::string Coordinate::toString() const {
     return "(" + std::to_string(rank) + "," + std::to_string(file) + ")";

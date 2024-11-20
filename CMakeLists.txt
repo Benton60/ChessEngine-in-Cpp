@@ -11,4 +11,6 @@ add_executable(ChessEngine
         Position.cpp
         Move.h
         Move.cpp
+        Bishop.h
+        Bishop.cpp
 )

@@ -23,7 +23,7 @@ void Position::print() {
 void Position::getLegalMoves(Move moves[]){
     for(int i =0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
-            switch(abs(board[i][j])) { // the absolute value means that our switch case can be half as long we just need to calculate the color in each case then.
+            switch(board[i][j]*color) { // the absolute value means that our switch case can be half as long we just need to calculate the color in each case then.
                 case 100: //pawn
                     //TODO -- implement the pawn's getMoves
                     break;
@@ -66,11 +66,13 @@ void Position::makeMove(Move &move) {
     move.capturedPiece = getCoordinate(move.end);
     setCoordinate(move.end, getCoordinate(move.start));
     setCoordinate(move.start, 0);
+    color*=-1;
 }
 //takes a move and unmakes it on the board
 void Position::unMakeMove(Move &move) {
     setCoordinate(move.start, getCoordinate(move.end));
     setCoordinate(move.end, move.capturedPiece);
+    color*=-1;
 }
 
 
@@ -81,4 +83,12 @@ int Position::getCoordinate(const Coordinate &coordinate) {
 void Position::setCoordinate(const Coordinate &coordinate, const int &piece) {
     board[coordinate.rank][coordinate.file] = piece;
 }
-
+bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {
+    if(getCoordinate(first) > 0 && getCoordinate(second) > 0) {
+        return true;
+    }
+    if(getCoordinate(first) < 0 && getCoordinate(second) < 0) {
+        return true;
+    }
+    return false;
+}
