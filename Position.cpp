@@ -6,6 +6,7 @@
 #include <iostream>
 #include <set>
 
+#include "Bishop.h"
 #include "Knight.h"
 
 Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), lastMove(lastMove), color(color) {}
@@ -31,10 +32,10 @@ void Position::getLegalMoves(Move moves[]){
                     //TODO -- implement the pawn's getMoves
                     break;
                 case 300: //Knight
-                    Knight(this, Coordinate(j, i)).getMoves(moves, length);
+                    //Knight(this, Coordinate(j, i)).getMoves(moves, length);
                     break;
                 case 350: //bishop
-                    //TODO -- implement the bishop's getMoves function
+                    Bishop(this, Coordinate(j, i)).getMoves(moves, length);
                     break;
                 case 500: //rook
                     //TODO -- implement the rook's getMoves function

@@ -9,9 +9,9 @@
 
 class Bishop {
 public:
-    Position &position;
+    Position *position;
     Coordinate location;
-    Bishop(Position &position, const Coordinate &location);
+    Bishop(Position *position, const Coordinate &location);
 
     void getMoves(Move moves[], int &length);
 };

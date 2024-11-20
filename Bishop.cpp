@@ -4,16 +4,77 @@
 
 #include "Bishop.h"
 
-Bishop::Bishop(Position &position, const Coordinate &location): position(position), location(location) {}
+#include <iostream>
+#include <ostream>
+
+Bishop::Bishop(Position *position, const Coordinate &location): position(position), location(location) {}
 
 
 
 
 void Bishop::getMoves(Move moves[], int &length) {
-    Coordinate allEndCoordinates[13];
-
-    //
-    for(int i = 0; i < 7; i++) {
-
+    //positive and positive
+    for(int i = 1; i < 7; i++) {
+        Coordinate endCoordinate = Coordinate(location.file + i, location.rank + i);
+        if(endCoordinate.inBounds()) {
+            if(position->areSameColor(location,endCoordinate)) {
+                break;
+            }
+            if(position->getCoordinate(endCoordinate) != 0){
+                moves[length++] = Move(location, endCoordinate);
+                break;
+            }
+            moves[length++] = Move(location, endCoordinate);
+        }else {
+            break;
+        }
+    }
+    //negative and negative
+    for(int i = 1; i < 7; i++) {
+        Coordinate endCoordinate = Coordinate(location.file - i, location.rank - i);
+        if(endCoordinate.inBounds()) {
+            if(position->areSameColor(location,endCoordinate)) {
+                break;
+            }
+            if(position->getCoordinate(endCoordinate) != 0){
+                moves[length++] = Move(location, endCoordinate);
+                break;
+            }
+            moves[length++] = Move(location, endCoordinate);
+        }else {
+            break;
+        }
+    }
+    //negative and positive
+    for(int i = 1; i < 7; i++) {
+        Coordinate endCoordinate = Coordinate(location.file - i, location.rank + i);
+        if(endCoordinate.inBounds()) {
+            if(position->areSameColor(location,endCoordinate)) {
+                break;
+            }
+            if(position->getCoordinate(endCoordinate) != 0){
+                moves[length++] = Move(location, endCoordinate);
+                break;
+            }
+            moves[length++] = Move(location, endCoordinate);
+        }else {
+            break;
+        }
+    }
+    //positive and negative
+    for(int i = 1; i < 7; i++) {
+        Coordinate endCoordinate = Coordinate(location.file + i, location.rank - i);
+        if(endCoordinate.inBounds()) {
+            if(position->areSameColor(location,endCoordinate)) {
+                break;
+            }
+            if(position->getCoordinate(endCoordinate) != 0){
+                moves[length++] = Move(location, endCoordinate);
+                break;
+            }
+            moves[length++] = Move(location, endCoordinate);
+        }else {
+            break;
+        }
     }
 }

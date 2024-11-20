@@ -17,15 +17,31 @@ int main() {
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {-100, -100,-100,-100,-100,-100,-100,-100},
+        {-100, -100,-100,0,-100,-100,-100,-100},
         {-500,-300,-350,-900,-10000,-350,-300,-500}
+    };
+    int board2[8][8] = {
+        //
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,350,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
     };
     Move moves[50];
 
-    Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), -1);
+    Position position = Position(board2, Move(Coordinate(0,0), Coordinate(0,0)), 1);
     position.getLegalMoves(moves);
     std::cout << Move::toString(moves);
-
+    for(Move move : moves) {
+        if(move.end.file != -1) {
+            board2[move.end.rank][move.end.file] = 1;
+        }
+    }
+    position.print();
 
 
 

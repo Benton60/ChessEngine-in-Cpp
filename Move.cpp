@@ -14,7 +14,7 @@ Move::Move(Coordinate start, Coordinate end): start(-1,-1), end(-1,-1) {
     this->end = end;
 
 }
-Move::Move(): start(0,0), end(0,0) {
+Move::Move(): start(), end() {
 }
 
 
