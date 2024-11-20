@@ -6,6 +6,8 @@
 #include <iostream>
 #include <set>
 
+#include "Knight.h"
+
 Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), lastMove(lastMove), color(color) {}
 
 
@@ -21,6 +23,7 @@ void Position::print() {
 //this will get all the possible moves for the position
 //this should only return legal moves
 void Position::getLegalMoves(Move moves[]){
+    int length = 0;
     for(int i =0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
             switch(board[i][j]*color) { // the absolute value means that our switch case can be half as long we just need to calculate the color in each case then.
@@ -28,7 +31,7 @@ void Position::getLegalMoves(Move moves[]){
                     //TODO -- implement the pawn's getMoves
                     break;
                 case 300: //Knight
-                    //TODO -- implement the Knight's getMoves function
+                    Knight(this, Coordinate(i, j)).getMoves(moves, length);
                     break;
                 case 350: //bishop
                     //TODO -- implement the bishop's getMoves function

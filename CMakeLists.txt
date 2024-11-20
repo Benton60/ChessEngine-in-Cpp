@@ -13,4 +13,6 @@ add_executable(ChessEngine
         Move.cpp
         Bishop.h
         Bishop.cpp
+        Knight.cpp
+        Knight.h
 )

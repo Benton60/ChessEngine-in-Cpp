@@ -22,12 +22,8 @@ int main() {
 
 
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), -1);
-    position.print();
-    Move move = Move(Coordinate(0,0), Coordinate(1,0));
-    position.makeMove(move);
-    std::cout << move.capturedPiece << std::endl;
-    position.print();
-    position.unMakeMove(move);
-    position.print();
-    std::cout << position.getEvaluation() << std::endl;
+    //position.print();
+
+
+
 }
