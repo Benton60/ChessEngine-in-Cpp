@@ -9,6 +9,7 @@
 #include "Bishop.h"
 #include "King.h"
 #include "Knight.h"
+#include "Pawn.h"
 #include "Rook.h"
 
 Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), lastMove(lastMove), color(color) {}
@@ -31,7 +32,7 @@ void Position::getLegalMoves(Move moves[]){
         for(int j = 0; j < 8; j++) {
             switch(board[i][j]*color) { // the absolute value means that our switch case can be half as long we just need to calculate the color in each case then.
                 case 100: //pawn
-                    //TODO -- implement the pawn's getMoves
+                    Pawn(this, Coordinate(j,i)).getMoves(moves, length);
                     break;
                 case 300: //Knight
                     Knight(this, Coordinate(j, i)).getMoves(moves, length);
@@ -72,6 +73,8 @@ void Position::makeMove(Move &move) {
     move.capturedPiece = getCoordinate(move.end);
     setCoordinate(move.end, getCoordinate(move.start));
     setCoordinate(move.start, 0);
+
+    this->lastMove = move;
     color*=-1;
 }
 //takes a move and unmakes it on the board

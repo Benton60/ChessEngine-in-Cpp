@@ -24,15 +24,15 @@ int main() {
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
+        {100,-100,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {0,0,0,10000,0,0,0,0},
-        {0,0,0,-100,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
     };
     Move moves[50];
 
-    Position position = Position(board2, Move(Coordinate(0,0), Coordinate(0,0)), 1);
+    Position position = Position(board2, Move(Coordinate(0,1), Coordinate(0,3)), -1);
     position.getLegalMoves(moves);
     std::cout << Move::toString(moves);
     for(Move move : moves) {

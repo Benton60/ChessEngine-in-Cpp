@@ -13,7 +13,9 @@
 
 
 class Move {
-    public:
+public:
+        Coordinate formerStartCoord;
+        Coordinate formerEndCoord;
         Coordinate start;
         Coordinate end;
         int capturedPiece;
