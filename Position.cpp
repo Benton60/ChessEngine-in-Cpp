@@ -7,6 +7,7 @@
 #include <set>
 
 #include "Bishop.h"
+#include "King.h"
 #include "Knight.h"
 #include "Rook.h"
 
@@ -45,7 +46,7 @@ void Position::getLegalMoves(Move moves[]){
                     //TODO -- implement the queen's getMoves function
                     break;
                 case 10000: //king
-                    //TODO -- implement the king's getMoves function
+                    King(this, Coordinate(j, i)).getMoves(moves, length);
                     break;
                 default: //empty square
                     break;
