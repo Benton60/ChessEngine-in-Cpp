@@ -71,15 +71,24 @@ double Position::getEvaluation() {
 void Position::makeMove(Move &move) {
     //this line of code saves whatever value is in the end coordinate of the move so that it can be restored if the move is unmade
     move.capturedPiece = getCoordinate(move.end);
-    setCoordinate(move.end, getCoordinate(move.start));
+    move.capturingPiece = getCoordinate(move.start);
+    setCoordinate(move.end, move.capturingPiece);
     setCoordinate(move.start, 0);
-
     this->lastMove = move;
+
+    //this is the promotion for white
+    if(move.end.rank == 7 && getCoordinate(move.end) == 100) {
+        setCoordinate(move.end, 900);
+    }
+    //this is the promotion for white
+    if(move.end.rank == 0 && getCoordinate(move.end) == -100) {
+        setCoordinate(move.end, -900);
+    }
     color*=-1;
 }
 //takes a move and unmakes it on the board
 void Position::unMakeMove(Move &move) {
-    setCoordinate(move.start, getCoordinate(move.end));
+    setCoordinate(move.start, move.capturingPiece);
     setCoordinate(move.end, move.capturedPiece);
     color*=-1;
 }

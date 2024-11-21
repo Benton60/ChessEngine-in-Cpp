@@ -24,24 +24,25 @@ int main() {
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {100,-100,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,100,0,0},
         {0,0,0,0,0,0,0,0},
     };
     Move moves[50];
 
-    Position position = Position(board2, Move(Coordinate(0,1), Coordinate(0,3)), -1);
+    Position position = Position(board2, Move(Coordinate(0,1), Coordinate(0,3)), 1);
     position.getLegalMoves(moves);
-    std::cout << Move::toString(moves);
-    for(Move move : moves) {
-        if(move.end.file != -1) {
-            board2[move.end.rank][move.end.file] = 1;
-        }
-    }
+    //std::cout << Move::toString(moves);
     position.print();
-
+    std::cout << std::endl << std::endl;
+    position.makeMove(moves[0]);
+    position.print();
+    std::cout << std::endl << std::endl;
+    position.unMakeMove(moves[0]);
+    position.print();
+    std::cout << std::endl << std::endl;
 
 
 }
