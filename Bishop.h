@@ -10,7 +10,7 @@
 class Bishop {
 public:
     Position *position;
-    Coordinate location;
+    const Coordinate location;
     Bishop(Position *position, const Coordinate &location);
 
     void getMoves(Move moves[], int &length);
