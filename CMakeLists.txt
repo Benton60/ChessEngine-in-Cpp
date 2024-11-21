@@ -17,4 +17,6 @@ add_executable(ChessEngine
         Knight.h
         King.cpp
         King.h
+        Rook.h
+        Rook.cpp
 )
