@@ -21,4 +21,6 @@ add_executable(ChessEngine
         Rook.cpp
         Queen.cpp
         Queen.h
+        Pawn.h
+        Pawn.cpp
 )
