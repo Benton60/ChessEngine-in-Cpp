@@ -22,14 +22,15 @@ void Position::print() {
         }
         std::cout << std::endl;
     }
+    std::cout << "Color = " << color << ", LastMove = " << lastMove.toString() << std::endl;
 }
 
 //this will get all the possible moves for the position
 //this should only return legal moves
-void Position::getLegalMoves(Move moves[]){
+int Position::getLegalMoves(Move moves[]){
     Move allLegalMoves[50];
     int length = 0, finalLength = 0;
-    for(int i =0; i < 8; i++) {
+    for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
             switch(board[i][j]*color) { // the absolute value means that our switch case can be half as long we just need to calculate the color in each case then.
                 case 100: //pawn
@@ -61,6 +62,7 @@ void Position::getLegalMoves(Move moves[]){
             moves[finalLength++] = allLegalMoves[i];
         }
     }
+    return finalLength;
 }
 //this checks whether the king can be captured after the move is made
 bool Position::checkForKingDanger(Move &move) {

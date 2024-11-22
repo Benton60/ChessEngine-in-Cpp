@@ -34,7 +34,7 @@ void Pawn::getMoves(Move moves[], int &length) {
         if(position->getCoordinate(position->lastMove.end) == -100 //Checks whether the last move was a black pawn
             && position->lastMove.end.rank - position->lastMove.start.rank == -2 //checks that the pawn moved two spaces
             && abs(position->lastMove.end.file - location.file) == 1 //checks that it is on either side of the current pawn
-            ) {
+            && position->lastMove.end.rank == location.rank) {
             moves[length++] = Move(location, Coordinate(position->lastMove.end.file, position->lastMove.end.rank+1));
         }
 
@@ -64,7 +64,8 @@ void Pawn::getMoves(Move moves[], int &length) {
         if(position->getCoordinate(position->lastMove.end) == 100 //Checks whether the last move was a black pawn
             && position->lastMove.end.rank - position->lastMove.start.rank == 2 //checks that the pawn moved two spaces
             && abs(position->lastMove.end.file - location.file) == 1 //checks that it is on either side of the current pawn
-            ) {
+             && position->lastMove.end.rank == location.rank
+             ) {
             moves[length++] = Move(location, Coordinate(position->lastMove.end.file, position->lastMove.end.rank-1));
             }
     }

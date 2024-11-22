@@ -30,7 +30,7 @@ class Position {
 
 
     //adds all the legal moves to the moves[] array
-    void getLegalMoves(Move moves[]);
+    int getLegalMoves(Move moves[]);
     bool checkForKingDanger(Move &move);
     //returns a double value that represents the evaluation for a position
     double getEvaluation();
