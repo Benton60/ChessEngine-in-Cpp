@@ -32,6 +32,9 @@ class Position {
     //adds all the legal moves to the moves[] array
     int getLegalMoves(Move moves[]);
     bool checkForKingDanger(Move &move);
+
+    bool checkForKingDanger();
+
     //returns a double value that represents the evaluation for a position
     double getEvaluation();
     //takes a move and makes it on the board
@@ -41,8 +44,12 @@ class Position {
     int getCoordinate(const Coordinate &coordinate);
     void setCoordinate(const Coordinate &coordinate, const int &piece);
     bool areSameColor(const Coordinate &first, const Coordinate &second);
-
     Coordinate findKingPosition();
+    Move getBestMove(int depth);
+
+    int search(int depth);
+
+    int search(int depth, int alpha, int beta);
 };
 
 

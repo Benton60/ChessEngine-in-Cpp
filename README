@@ -32,3 +32,8 @@ Piece values:
     Bishop - 350
     Knight - 300
     Pawn - 100
+
+
+References and Resources:
+    FIDE's International Chess Rulebook - "https://handbook.fide.com/"
+    Alpha-Beta Pruning - "https://www.chessprogramming.org/Alpha-Beta#:~:text=The%20Alpha%2DBeta%20algorithm%20(Alpha,of%20overlooking%20a%20better%20move."
