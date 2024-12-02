@@ -14,10 +14,10 @@ int main() {
         {500,300,350,900,10000,350,300,500},
         {100,100,100,100,100,100,100,100},
         {0,0,0,0,0,0,0,0},
+        {0,0,0,-350,0,0,0,-900},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0},
-        {-100, -100,-100,-100,-100,-100,-100,-100},
+        {-100,-100,-100,-100,-100,-100,-100,-100},
         {-500,-300,-350,-900,-10000,-350,-300,-500}
     };
     int board[8][8] = {
@@ -32,9 +32,9 @@ int main() {
     };
     int startTime = time(NULL);
     Move moves[50];
-    Position position = Position(board2, Move(Coordinate(0,0), Coordinate(0,0)), 1);
+    Position position = Position(board2, Move(Coordinate(0,0), Coordinate(0,0)), -1);
 
-    position.getBestMove(6);
+    std::cout << position.getBestMove(2).toString();
 
 
 
