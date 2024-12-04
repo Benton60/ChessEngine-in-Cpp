@@ -1,0 +1,71 @@
+Chess Engine For C++ Final Project
+By Benton Hershberger, William Walline
+
+Description:
+    We decided we wanted to make a chess engine that would show the user the best move on a given (legal) chess board regardless of where the pieces are.
+    It also should be able to calculate positions for both black and white.
+
+Responsibilities:
+    Benton Hershberger -> Wrote piece classes, Wrote the core classes (Move, Position, etc), Maintained documentation
+    William Walline    -> Write piece classes, Wrote the user interface, Maintained documentation
+
+Note 1:
+     We both spent a lot of time writing code together so we didn't really have many clear separate tasks.
+
+Challenges:
+    1. Getting pawns to En passant correctly
+        S) We had to carefully analyze all the different rules that apply to en passant and test the pawns move generation function multiple times
+           to catch and fix every bug.
+    2. Recognizing king checks
+        S) We first had to decide on how to check whether the king is in check. We decided on a strategy that would allow us to reuse a lot of the code we wrote for piece move generation.
+           First we pretend the king is every single piece and then we check whether the king can capture that kind of piece in the opposing color. if it can then the king is in check.
+    3. Setting up version control (Git)
+        S) It was the first time either of us had worked on a git repository with multiple people so we had to figure out how to properly push and pull changes to avoid merge conflicts.
+
+
+
+Project Structure:
+    Coordinate class -> The Coordinate class is the most basic class that stores a rank and file that corresponds to a square on the board.
+                        We use these to access and modify squares on the chess board by passing coordinates to the position class.
+
+    Move class       -> The move class is one level up from the Coordinate class. It stores two coordinates, a start square and an end square.
+                        It also has a capturedPiece variable that gets defined when the move is made in the position class.
+                        The capturedPiece variable stores the value that was overwritten when the move was made. We can use this variable to unmake a move on the chess board.
+
+    Position class   -> The position class is the class that holds the 2D array that represents the chess board. All access and change of values on the board should flow
+                        through this class. It holds all the getters and setters for the chess board.
+
+    Piece classes    -> Each piece class contains a function called getMoves that adds that pieces legal moves to a master list that is passed into the function.
+                        All the piece classes act very similarly to each other and all the code is basically identical besides the rules for legal moves.
+
+Note 2:
+    None of the classes have getters or setters because that adds one layer of abstraction. Normally the safety
+    that they ensure is worth the nanoseconds of delay it creates, but in the case of a chess engine where efficiency is
+    so critical we left them out.
+
+Piece values:
+    (Sub-Note 1: These values are based off of relative piece worth. EX: a queen is worth nine pawns)
+    (Sub-Note 2: The black piece values are the same as the white pieces just multiplied by negative one)
+
+    King - 10000   //I just picked a really big number so that it favors the king more than other pieces
+    Queen - 900
+    Rook - 500
+    Bishop - 350
+    Knight - 300
+    Pawn - 100
+
+
+
+How to use example positions in main class:
+    1. Run Program
+    2. When prompted to enter the value for coordinate (0,0)... copy and paste the entire position and hit enter.
+    3. Enter the color as given in the example
+    4. Enter the depth as given in the example
+    5. Compare best move output with best move given in example
+
+Note 3:
+    You can enter every piece separately to input new positions that aren't in our example tests. Just make sure you enter the pieces and color correctly and have the depth set high enough.
+
+References and Resources:
+    FIDE's International Chess Rulebook - "https://handbook.fide.com/"
+    Alpha-Beta Pruning - "https://www.chessprogramming.org/Alpha-Beta#:~:text=The%20Alpha%2DBeta%20algorithm%20(Alpha,of%20overlooking%20a%20better%20move."
