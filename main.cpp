@@ -63,11 +63,19 @@ int main() {
         std::cout << std::endl;
     }
 
-    std::cout << "\nWhich color's turn is it? (enter -1 for black and 1 for white) : \n";
+    std::cout << "\nWhich color's turn is it? (enter -1 for black and 1 for white) : ";
     std::cin >> position.color;
-    std::cout << "\nThe best possible move given this board is" << position.getBestMove(6).toString() << std::endl;
+    std::cout << "How deep do you want to search? (Recommended depth of 4) :";
+    int depth;
+    std::cin >> depth;
+    std::cout << "\nThe best possible move given this board is" << position.getBestMove(depth).toString() << std::endl;
 
     return 0;
 
 }
 
+//Example Position 1 - Starting position
+//500 300 350 900 10000 350 300 500 100 100 100 100 100 100 100 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -100 -100 -100 -100 -100 -100 -100 -100 -500 -300 -350 -900 -10000 -350 -300 -500
+
+//Example Position 2 - Mate in One (,) - (,)
+//0 0 0 0 0 0
