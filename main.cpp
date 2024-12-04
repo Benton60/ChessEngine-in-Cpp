@@ -41,7 +41,7 @@ int main() {
     std::cout << "--------------------------\n";
     std::cout << "Enter your chessboard by entering values for each position.\n";
     std::cout << "--> pawns = 100, knights = 300, bishops = 350, rooks = 500, queens = 900, and kings = 10000\n";
-    std::cout << "--> NEGATIVE values represent black's pieces & POSITIVE numbers represent white's pieces\n";
+    std::cout << "--> NEGATIVE values represent black's pieces & POSITIVE values represent white's pieces\n";
     std::cout << "--> Enter 0 for empty squares\n";
     std::cout << "--> Coordinate (0,0) is the upper left-hand corner of the board & (7,7) is the lower right-hand corner.\n\n";
 
@@ -56,19 +56,19 @@ int main() {
     // display the updated board to the user
     std::cout << "\nThank you for entering your board!\n";
     std::cout << "This is what it looks like...\n";
-    for (int rank = 0; rank < 8; rank++) {
-        for (int file = 0; file < 8; file++) {
-            std::cout << board[rank][file] << "\t";
-        }
-        std::cout << std::endl;
-    }
+    position.print();
 
     std::cout << "\nWhich color's turn is it? (enter -1 for black and 1 for white) : ";
     std::cin >> position.color;
     std::cout << "How deep do you want to search? (Recommended depth of 4) :";
     int depth;
     std::cin >> depth;
-    std::cout << "\nThe best possible move given this board is" << position.getBestMove(depth).toString() << std::endl;
+    std::cout << "\nThe best possible move given this board is:\n";
+
+    Move bestMove = position.getBestMove(depth);
+    position.makeMove(bestMove);
+    position.print();
+    std::cout << "\n" << bestMove.toString() << std::endl;
 
     return 0;
 
