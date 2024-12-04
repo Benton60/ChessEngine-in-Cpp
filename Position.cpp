@@ -71,6 +71,30 @@ bool Position::checkForKingDanger(Move &move) {
     makeMove(move);
     Coordinate location = findKingPosition();
 
+    //KING
+    Coordinate allKEndCoordinates[] = {
+        Coordinate(location.file-1, location.rank+1),
+        Coordinate(location.file+0, location.rank+1),
+        Coordinate(location.file+1, location.rank+1),
+        Coordinate(location.file+1, location.rank+0),
+        Coordinate(location.file+1, location.rank-1),
+        Coordinate(location.file+0, location.rank-1),
+        Coordinate(location.file-1, location.rank-1),
+        Coordinate(location.file-1, location.rank+0),
+    };
+    for (int i = 0; i < 8; i++) {
+        if (allKEndCoordinates[i].inBounds()) {
+            getCoordinate(location); // current position
+            getCoordinate(allKEndCoordinates[i]); // this is the possible move
+            if (getCoordinate(allKEndCoordinates[i]) == 10000*color) {
+                unMakeMove(move);
+                return true;
+            }
+
+
+        }
+    }
+
     //KNIGHT
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file+2, location.rank-1),
