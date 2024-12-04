@@ -16,9 +16,9 @@ Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), 
 
 
 void Position::print() {
-    for (const auto & i : board) {
-        for (const int j : i) {
-            std::cout << j << " ";
+    for (int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; file++) {
+            std::cout << board[rank][file] << "\t";
         }
         std::cout << std::endl;
     }
