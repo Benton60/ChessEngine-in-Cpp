@@ -8,33 +8,19 @@
 
 
 int main() {
-    //this board is the start position we can use it to test our move generation functions.
-    int board2[8][8] = {
-        //
-        {500,300,350,900,10000,350,300,500},
-        {100,100,100,100,100,100,100,100},
-        {0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0},
-        {-100, -100,-100,-100,-100,-100,-100,-100},
-        {-500,-300,-350,-900,-10000,-350,-300,-500}
-    };
+
     int board[8][8] = {
-        {0,0,0,10000,0,0,0,0},
         {0,0,0,0,0,0,0,0},
-        {0,-300,0,0,0,0,0,0},
-        {0,-350,-350,0,-350,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
+        {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
         {0,0,0,0,0,0,0,0},
     };
 
-    Move moves[50];
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), 1);
-
-
 
     // initial message/directions
     std::cout << "WELCOME TO CHESS ENGINE!!!\n";
@@ -54,22 +40,26 @@ int main() {
     }
 
     // display the updated board to the user
-    std::cout << "\nThank you for entering your board!\n";
-    std::cout << "This is what it looks like...\n";
+    std::cout << "\n\nThank you for entering your board!\n";
+    std::cout << "This is what it looks like:\n";
+    std::cout << "------------------------------------------------------------\n";
     position.print();
+    std::cout << "------------------------------------------------------------\n";
 
     std::cout << "\nWhich color's turn is it? (enter -1 for black and 1 for white) : ";
     std::cin >> position.color;
-    std::cout << "How deep do you want to search? (Recommended depth of 4) :";
+    std::cout << "\n";
+    std::cout << "How deep do you want to search? (Recommended >= 3)";
     int depth;
     std::cin >> depth;
     std::cout << "\nThe best possible move given this board is:\n";
     std::cout << "------------------------------------------------------------\n";
-
     Move bestMove = position.getBestMove(depth);
     position.makeMove(bestMove);
     position.print();
-    std::cout << "\n" << bestMove.toString() << std::endl;
+    std::cout << "------------------------------------------------------------\n";
+
+    std::cout << "\nThank you for using our chess engine!\n";
 
     return 0;
 
