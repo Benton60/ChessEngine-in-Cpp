@@ -33,6 +33,12 @@ Piece values:
     Knight - 300
     Pawn - 100
 
+How to use example positions in main class:
+    1. Run Program
+    2. When prompted to enter the value for coordinate (0,0)... copy and paste the entire position and hit enter.
+    3. Enter the color as given in the example
+    4. Enter the depth as given in the example
+    5. Compare best move output with best move given in example
 
 References and Resources:
     FIDE's International Chess Rulebook - "https://handbook.fide.com/"
