@@ -10,6 +10,7 @@
 #include "King.h"
 #include "Knight.h"
 #include "Pawn.h"
+#include "Queen.h"
 #include "Rook.h"
 
 Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), lastMove(lastMove), color(color) {}
@@ -46,7 +47,7 @@ int Position::getLegalMoves(Move moves[]){
                     Rook(this, Coordinate(j, i)).getMoves(allLegalMoves, length);
                     break;
                 case 900: //queen
-                    //TODO -- implement the queen's getMoves function
+                    Queen(this, Coordinate(j, i)).getMoves(allLegalMoves, length);
                     break;
                 case 10000: //king
                     King(this, Coordinate(j, i)).getMoves(allLegalMoves, length);
@@ -218,7 +219,6 @@ bool Position::checkForKingDanger(Move &move) {
 //this checks if the current position can be captured
 bool Position::checkForKingDanger() {
     Coordinate location = findKingPosition();
-
     //KNIGHT
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file+2, location.rank-1),
@@ -395,6 +395,7 @@ int Position::getCoordinate(const Coordinate &coordinate) {
 void Position::setCoordinate(const Coordinate &coordinate, const int &piece) {
     board[coordinate.rank][coordinate.file] = piece;
 }
+//simple function to determine whether two squares hold pieces of the same color
 bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {
     if(getCoordinate(first) > 0 && getCoordinate(second) > 0) {
         return true;
@@ -423,7 +424,6 @@ Move Position::getBestMove(int depth) {
 
         this->makeMove(moves[i]);
         int currentEval = this->search(depth-1);
-        std::cout << moves[i].toString() << " : " << currentEval << std::endl;
         //this keeps track of the best move that has been found so far.
         if (currentEval > bestMoveEvaluation) {
             bestMoveEvaluation = currentEval;
@@ -446,9 +446,12 @@ int Position::search(int depth) {
     //check that there are available moves
     if (length <= 0) {
         //if there aren't any and the king is in danger then it is checkmate
+        this->color *= -1; //this line switches the color to check the opposing kings danger not our own
         if (checkForKingDanger()) {
-            return -1000000;
+            this->color *= -1; //this line switches the color to check the opposing kings danger not our own
+            return 1000000;
         }
+        this->color *= -1; //this line switches the color to check the opposing kings danger not our own
         //otherwise it is stalemate which evaluates to 0
         return 0;
     }
@@ -467,36 +470,4 @@ int Position::search(int depth) {
     }
     return worstMoveEvaluation;
 }
-//this is the search evaluation function with alpha-beta pruning. there is a link in the readme to an article explaining it if you are interested.
-int Position::search(int depth, int alpha, int beta) {
-    //if we have reached the end of our depth then we return the static evaluation.
-    if (depth <= 0) {
-        return this->getEvaluation();
-    }
-    //otherwise we get the moves in the position.
-    Move moves[50];
-    int length = this->getLegalMoves(moves);
-    //check that there are available moves
-    if (length <= 0) {
-        //if there aren't any and the king is in danger then it is checkmate
-        if (checkForKingDanger()) {
-            return -1000000;
-        }
-        //otherwise it is stalemate which evaluates to 0
-        return 0;
-    }
 
-    int worstMoveEvaluation = 100000000;
-    for(int i = 0; i < length; i++) {
-        this->makeMove(moves[i]);
-        //this negative sign is very important because it flips the eval for black and white
-        int currentEval = -this->search(depth-1);
-
-        //we pick the evaluation that is closest to zero because that is what the opponent will always choose.
-        if (currentEval < worstMoveEvaluation) {
-            worstMoveEvaluation = currentEval;
-        }
-        this->unMakeMove(moves[i]);
-    }
-    return worstMoveEvaluation;
-}
