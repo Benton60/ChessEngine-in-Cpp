@@ -32,7 +32,7 @@ int main() {
     };
 
     Move moves[50];
-    Position position = Position(board2, Move(Coordinate(0,0), Coordinate(0,0)), 1);
+    Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), 1);
 
 
 
@@ -77,5 +77,5 @@ int main() {
 //Example Position 1 - Starting position
 //500 300 350 900 10000 350 300 500 100 100 100 100 100 100 100 100 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -100 -100 -100 -100 -100 -100 -100 -100 -500 -300 -350 -900 -10000 -350 -300 -500
 
-//Example Position 2 - Mate in One (,) - (,)
-//0 0 0 0 0 0
+//Example Position 2 - Mate in One (2,3) - (0,3)
+//0 0 0 0 0 -10000 0 0 0 0 0 0 0 0 0 0 0 0 0 500 0 10000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
