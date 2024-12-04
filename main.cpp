@@ -64,6 +64,7 @@ int main() {
     int depth;
     std::cin >> depth;
     std::cout << "\nThe best possible move given this board is:\n";
+    std::cout << "------------------------------------------------------------\n";
 
     Move bestMove = position.getBestMove(depth);
     position.makeMove(bestMove);
