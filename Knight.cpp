@@ -6,8 +6,9 @@
 
 Knight::Knight(Position* position, const Coordinate &location): position(position), location(location)  {}
 
-// this is a predetermined list of all possible knight moves
 void Knight::getMoves(Move moves[], int &length) {
+
+    // this is a predetermined list of all possible knight moves
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file+2, location.rank-1),
         Coordinate(location.file+2, location.rank+1),
@@ -25,7 +26,6 @@ void Knight::getMoves(Move moves[], int &length) {
                 moves[length] = Move(location, allEndCoordinates[i]);
                 length++;
             }
-
 
         }
     }

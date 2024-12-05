@@ -14,14 +14,12 @@ Move::Move(Coordinate start, Coordinate end): start(-1,-1), end(-1,-1) {
     this->end = end;
 
 }
-Move::Move(): start(), end() {
-}
+Move::Move(): start(), end() {}
 
-
+//toStrings return a nicely formatted string representation of the class
 std::string Move::toString() {
     return start.toString() + " " + end.toString();
 }
-
 std::string Move::toString(Move moves[]) {
     std::string result = "";
     for(int i = 0; i < 50; i++) {

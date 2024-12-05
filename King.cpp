@@ -7,8 +7,9 @@
 
 King::King(Position* position, const Coordinate &location): position(position), location(location)  {}
 
-// this is a predetermined list of all possible king moves
+
 void King::getMoves(Move moves[], int &length) {
+    // this is a predetermined list of all possible king moves
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file-1, location.rank+1),
         Coordinate(location.file+0, location.rank+1),

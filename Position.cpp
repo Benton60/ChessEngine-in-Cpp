@@ -430,7 +430,6 @@ void Position::unMakeMove(Move &move) {
 int Position::getCoordinate(const Coordinate &coordinate) {
     return board[coordinate.rank][coordinate.file];
 }
-
 void Position::setCoordinate(const Coordinate &coordinate, const int &piece) {
     board[coordinate.rank][coordinate.file] = piece;
 }
