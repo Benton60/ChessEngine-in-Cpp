@@ -10,6 +10,7 @@ Rook::Rook(Position *position, const Coordinate &location): position(position), 
 
 
 void Rook::getMoves(Move moves[], int &length) {
+    //these for loops iterate in each direction the rook can travel until the rook hits something at which point a break statement is used to pop out of that direction
     //rank positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file, location.rank + i);
