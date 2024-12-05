@@ -9,9 +9,6 @@
 
 Bishop::Bishop(Position *position, const Coordinate &location): position(position), location(location) {}
 
-
-
-
 void Bishop::getMoves(Move moves[], int &length) {
     //positive and positive
     for(int i = 1; i < 7; i++) {
