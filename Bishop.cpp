@@ -9,10 +9,8 @@
 
 Bishop::Bishop(Position *position, const Coordinate &location): position(position), location(location) {}
 
-
-
-
 void Bishop::getMoves(Move moves[], int &length) {
+    // these for loops iterate in a single direction until they hit another piece at which point they will go to the next for loop.
     //positive and positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file + i, location.rank + i);
