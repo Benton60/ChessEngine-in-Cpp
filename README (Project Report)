@@ -12,7 +12,7 @@ Responsibilities:
 Note 1:
      We both spent a lot of time writing code together so we didn't really have many clear separate tasks.
 
-Challenges:
+Challenges/Lessons Learned:
     1. Getting pawns to En passant correctly
         S) We had to carefully analyze all the different rules that apply to en passant and test the pawns move generation function multiple times
            to catch and fix every bug.
@@ -59,6 +59,7 @@ Piece values:
 How to use example positions in main class:
     1. Run Program
     2. When prompted to enter the value for coordinate (0,0)... copy and paste the entire position and hit enter.
+       (This will input the entire board for demonstration purposes. Normally, the user would enter each square as prompted.)
     3. Enter the color as given in the example
     4. Enter the depth as given in the example
     5. Compare best move output with best move given in example

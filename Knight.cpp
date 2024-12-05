@@ -6,7 +6,7 @@
 
 Knight::Knight(Position* position, const Coordinate &location): position(position), location(location)  {}
 
-
+// this is a predetermined list of all possible knight moves
 void Knight::getMoves(Move moves[], int &length) {
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file+2, location.rank-1),
@@ -18,6 +18,7 @@ void Knight::getMoves(Move moves[], int &length) {
         Coordinate(location.file-2, location.rank-1),
         Coordinate(location.file-2, location.rank+1),
     };
+    // adds all the moves that are actually legal
     for (int i = 0; i < 8; i++) {
         if (allEndCoordinates[i].inBounds()) {
             position->getCoordinate(location); // current position

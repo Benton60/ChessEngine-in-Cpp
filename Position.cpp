@@ -13,9 +13,13 @@
 #include "Queen.h"
 #include "Rook.h"
 
+// The position class is the class that holds the 2D array that represents the chess board.
+// All access and change of values on the board should flow through this class.
+// It holds all the getters and setters for the chess board.
+
 Position::Position(int (&board)[8][8], Move lastMove, int color): board(board), lastMove(lastMove), color(color) {}
 
-
+// this is what is called when printing the board
 void Position::print() {
     for (int rank = 0; rank < 8; rank++) {
         for (int file = 0; file < 8; file++) {
@@ -65,6 +69,7 @@ int Position::getLegalMoves(Move moves[]){
     }
     return finalLength;
 }
+
 //this checks whether the king can be captured after the move is made
 bool Position::checkForKingDanger(Move &move) {
 
@@ -240,10 +245,11 @@ bool Position::checkForKingDanger(Move &move) {
     unMakeMove(move);
     return false;
 }
+
 //this checks if the current position can be captured
 bool Position::checkForKingDanger() {
     Coordinate location = findKingPosition();
-    //KNIGHT
+    //KNIGHT -- see knight class to see how this works
     Coordinate allEndCoordinates[] = {
         Coordinate(location.file+2, location.rank-1),
         Coordinate(location.file+2, location.rank+1),
@@ -260,7 +266,7 @@ bool Position::checkForKingDanger() {
         }
     }
 
-    //ROOK AND QUEEN
+    //ROOK AND QUEEN -- see rook/queen class to see how this works
     //rank positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file, location.rank + i);
@@ -275,6 +281,7 @@ bool Position::checkForKingDanger() {
             break;
         }
     }
+
     //rank negative
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file, location.rank - i);
@@ -318,7 +325,7 @@ bool Position::checkForKingDanger() {
         }
     }
 
-    //BISHOP AND QUEEN
+    //BISHOP AND QUEEN -- see bishop/queen class to see how this works
     //positive and positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file + i, location.rank + i);
@@ -333,6 +340,7 @@ bool Position::checkForKingDanger() {
             break;
         }
     }
+
     //negative and negative
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file - i, location.rank - i);
@@ -347,6 +355,7 @@ bool Position::checkForKingDanger() {
             break;
         }
     }
+
     //negative and positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file - i, location.rank + i);
@@ -361,6 +370,7 @@ bool Position::checkForKingDanger() {
             break;
         }
     }
+
     //positive and negative
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file + i, location.rank - i);
@@ -377,6 +387,7 @@ bool Position::checkForKingDanger() {
     }
     return false;
 }
+
 //this adds up all the piece values on the board in the position.
 double Position::getEvaluation() {
     double sum = 0;
@@ -387,6 +398,7 @@ double Position::getEvaluation() {
     }
     return sum;
 }
+
 //takes a move and makes it on the board
 void Position::makeMove(Move &move) {
     //this line of code saves whatever value is in the end coordinate of the move so that it can be restored if the move is unmade
@@ -406,19 +418,23 @@ void Position::makeMove(Move &move) {
     }
     color*=-1;
 }
+
 //takes a move and unmakes it on the board
 void Position::unMakeMove(Move &move) {
     setCoordinate(move.start, move.capturingPiece);
     setCoordinate(move.end, move.capturedPiece);
     color*=-1;
 }
+
 //please use these functions to access coordinates of the board it can be kind of tricky because accessing the array is backwards from how it makes sense in our heads.
 int Position::getCoordinate(const Coordinate &coordinate) {
     return board[coordinate.rank][coordinate.file];
 }
+
 void Position::setCoordinate(const Coordinate &coordinate, const int &piece) {
     board[coordinate.rank][coordinate.file] = piece;
 }
+
 //simple function to determine whether two squares hold pieces of the same color
 bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {
     if(getCoordinate(first) > 0 && getCoordinate(second) > 0) {
@@ -429,6 +445,8 @@ bool Position::areSameColor(const Coordinate &first, const Coordinate &second) {
     }
     return false;
 }
+
+// this fxn is used by the fxn checkForKingDanger to find the king's position
 Coordinate Position::findKingPosition() {
     for(int i = 0; i < 8; i++) {
         for(int j = 0; j < 8; j++) {
@@ -439,6 +457,8 @@ Coordinate Position::findKingPosition() {
     }
     return Coordinate();
 }
+
+// this fxn is used to find the best move
 Move Position::getBestMove(int depth) {
     Move moves[50];
     Move bestMove;

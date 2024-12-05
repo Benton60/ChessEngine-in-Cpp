@@ -24,6 +24,7 @@ int main() {
     // initializing instance of position class
     Position position = Position(board, Move(Coordinate(0,0), Coordinate(0,0)), 1);
 
+    //beginning of User Interface
     // initial message/directions
     std::cout << "WELCOME TO CHESS ENGINE!!!\n";
     std::cout << "--------------------------\n";

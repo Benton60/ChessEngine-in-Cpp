@@ -5,7 +5,9 @@
 #include "Queen.h"
 Queen::Queen(Position *position, const Coordinate &location): position(position), location(location) {}
 
+// this is a predetermined list of all possible queen moves... basically just a combination of rook and bishop
 void Queen::getMoves(Move moves[], int &length) {
+    //see rook/bishop classes to see how these for loops work
     //rank positive
     for(int i = 1; i < 7; i++) {
         Coordinate endCoordinate = Coordinate(location.file, location.rank + i);
