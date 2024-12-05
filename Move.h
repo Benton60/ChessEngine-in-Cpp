@@ -13,13 +13,20 @@
 
 
 class Move {
-public:
+    public:
+        //this holds the start square of the move
         Coordinate start;
+        //this holds the end square where the piece will end up
         Coordinate end;
+
+        //these are used when the Position::unMakeMove function is called to unmake a move.
         int capturingPiece;
         int capturedPiece;
+        //
+
         Move(Coordinate start, Coordinate end);
         Move();
+        //this returns all the variables from the move class in a nice format to be printed
         std::string toString();
         static std::string toString(Move moves[]);
 };

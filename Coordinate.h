@@ -13,7 +13,6 @@ a second that will slow the engine down. That's why there aren't any getters or 
 #define COORDINATE_H
 #include <string>
 
-
 class Coordinate {
 public:
     int rank;
@@ -22,6 +21,7 @@ public:
     Coordinate();
     //this gives a representation like this "(R,F)" to make it easier to print the contents of a coordinate.
     std::string toString() const;
+    //checks whether the coordinate falls within the eight by eight chessboard
     bool inBounds() const;
 };
 
